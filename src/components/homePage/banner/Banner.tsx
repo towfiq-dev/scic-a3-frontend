@@ -1,205 +1,202 @@
-'use client'
+"use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowRight, MapPin, Star, Search, Play } from "lucide-react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
-import { motion } from 'framer-motion';
+import {
+  ArrowRight,
+  MapPin,
+  CalendarDays,
+  Users,
+  Search,
+  ChevronDown,
+  ShieldCheck,
+  Clock3,
+  BadgeCheck,
+  Compass,
+} from "lucide-react";
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+/**
+ * Hero — "Elevate Journeys"
+ *
+ * Tokens:
+ *  - ink:    #0B0F0E  (deepest shadow, text on light surfaces)
+ *  - amber:  #F0A868  (lantern / golden-hour accent — the one warm note)
+ *  - sand:   #F7F2E7  (headline + primary CTA)
+ *  - sea:    #7FD9D2  (secondary accent, cool counterpoint to amber)
+ *
+ * Signature element: a floating glass "plan your trip" card that overlaps
+ * the hero's bottom edge — it's the one bold, functional device the page
+ * is built around, everything else stays quiet.
+ */
 
-const images = [
-  '/images/banner1.jpg',
-  '/images/banner2.jpg',
-  '/images/banner3.jpg',
-  '/images/banner4.jpg',
-]
+const trustItems = [
+  { icon: ShieldCheck, label: "Free cancellation" },
+  { icon: BadgeCheck, label: "Best price guarantee" },
+  { icon: Clock3, label: "24/7 expert support" },
+  { icon: Compass, label: "Instant confirmation" },
+];
 
-const animatedTexts = [
-  'Luxury Tours',
-  'Adventure Travel',
-  'Beach Holidays',
-  'Mountain Escapes'
-]
+const destinations = ["Bali, Indonesia", "Maldives", "Santorini, Greece", "Sajek Valley, Bangladesh"];
 
-const HeroBanner = () => {
-  const [textIndex, setTextIndex] = useState(0)
+export default function Hero() {
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTextIndex((prev) => prev === animatedTexts.length - 1 ? 0 : prev + 1)
-    }, 2500)
-    return () => clearInterval(interval)
-  }, [])
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden">
-      {/* Background Slider */}
-      <Swiper
-        modules={[Autoplay, Pagination, EffectFade]}
-        autoplay={{ delay: 4500, disableOnInteraction: false }}
-        loop={true}
-        effect="fade"
-        pagination={{ clickable: true }}
-        className="absolute inset-0 h-full w-full z-0"
+    <section className="relative isolate w-full overflow-hidden bg-[#0B0F0E] pb-32 sm:pb-28">
+      {/* ---------- Cinematic background photo ---------- */}
+      <div className="absolute inset-0 h-[100vh] min-h-[640px] overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=2400&q=80"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full origin-center scale-100 object-cover kenburns"
+        />
+        {/* colour grade + legibility gradients */}
+        <div className="absolute inset-0 bg-[#0B0F0E]/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0E] via-[#0B0F0E]/55 to-[#0B0F0E]/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0F0E]/70 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_35%,transparent_0%,#0B0F0E_100%)] opacity-60" />
+      </div>
+
+      {/* ---------- Content ---------- */}
+      <div className="relative mx-auto flex min-h-[100vh] min-h-[640px] max-w-4xl flex-col items-center justify-center px-6 pt-32 text-center">
+        <div
+          className={`mb-6 inline-flex items-center gap-2 rounded-full border border-[#F0A868]/30 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#F0A868] backdrop-blur-sm transition-all duration-700 ${
+            mounted ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+          }`}
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-[#F0A868]" />
+          Limited-time offer — save up to 30%
+        </div>
+
+        <h1
+          className={`font-serif text-[2.75rem] leading-[1.05] tracking-tight text-[#F7F2E7] sm:text-6xl md:text-[5rem] transition-all duration-700 delay-100 ${
+            mounted ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+          }`}
+        >
+          Your next adventure
+          <br />
+          <span className="italic text-[#7FD9D2]">starts now</span>
+        </h1>
+
+        <p
+          className={`mx-auto mt-6 max-w-lg text-balance text-base text-[#F7F2E7]/75 sm:text-lg transition-all duration-700 delay-200 ${
+            mounted ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+          }`}
+        >
+          Join over 15,000 travelers who trust Elevate Journeys for extraordinary
+          journeys — expert guides, seamless booking, unforgettable memories.
+        </p>
+
+        <div
+          className={`mt-9 flex flex-col items-center gap-3 sm:flex-row transition-all duration-700 delay-300 ${
+            mounted ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+          }`}
+        >
+          <button className="group inline-flex items-center gap-2 rounded-full bg-[#F7F2E7] px-7 py-3.5 text-sm font-semibold text-[#0B0F0E] shadow-lg shadow-black/20 transition-transform duration-200 hover:-translate-y-0.5 hover:bg-white">
+            Book your trip today
+            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </button>
+          <button className="rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-[#F7F2E7] backdrop-blur-sm transition-colors duration-200 hover:bg-white/10">
+            Explore destinations
+          </button>
+        </div>
+
+        <ul
+          className={`mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-xs text-[#F7F2E7]/65 transition-all duration-700 delay-500 ${
+            mounted ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {trustItems.map(({ icon: Icon, label }) => (
+            <li key={label} className="flex items-center gap-1.5">
+              <Icon className="h-3.5 w-3.5 text-[#F0A868]" strokeWidth={2} />
+              {label}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* ---------- Signature: floating "plan your trip" search card ---------- */}
+      <div
+        className={`relative z-10 mx-auto -mt-16 w-[min(1040px,92vw)] transition-all duration-700 delay-500 ${
+          mounted ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+        }`}
       >
-        {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className="w-full h-screen bg-cover bg-center relative"
-              style={{ backgroundImage: `url(${image})` }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70 z-10" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent z-20" />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      {/* Ambient glow */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 blur-[120px] rounded-full z-10 pointer-events-none" />
-
-      {/* Main Content */}
-      <div className="absolute inset-0 z-30 flex items-center">
-        <div className="max-w-7xl mx-auto px-6 w-full pt-20">
-          <div className="max-w-3xl">
-
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-8"
-            >
-              <div className="flex -space-x-1">
-                {[1, 2, 3].map(i => (
-                  <div key={i} className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 border border-white/50" />
-                ))}
-              </div>
-              <Star className="text-amber-400 fill-amber-400" size={14} />
-              <span className="text-xs text-white font-semibold">Trusted by 15K+ Travelers</span>
-            </motion.div>
-
-            {/* Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-serif font-black text-white leading-[1.05] mb-6"
-            >
-              Explore The
-              <span
-                key={textIndex}
-                className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300 mt-1"
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-2xl shadow-black/40 backdrop-blur-xl sm:grid-cols-[1.4fr_1fr_1fr_auto]">
+          {/* destination */}
+          <label className="group flex cursor-pointer flex-col gap-1 bg-[#0B0F0E]/40 px-6 py-4 text-left transition-colors hover:bg-[#0B0F0E]/55 sm:px-7">
+            <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-[#F7F2E7]/50">
+              <MapPin className="h-3.5 w-3.5 text-[#F0A868]" />
+              Destination
+            </span>
+            <span className="flex items-center justify-between gap-2 text-sm font-medium text-[#F7F2E7]">
+              <select
+                defaultValue={destinations[0]}
+                className="w-full cursor-pointer appearance-none bg-transparent text-sm font-medium text-[#F7F2E7] outline-none [&>option]:text-[#0B0F0E]"
               >
-                {animatedTexts[textIndex]}
-              </span>
-            </motion.h1>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.9 }}
-              className="text-base md:text-lg text-gray-300 leading-relaxed mb-10 max-w-xl"
-            >
-              Discover breathtaking destinations, unforgettable adventures, and world-class
-              travel experiences crafted for modern explorers.
-            </motion.p>
-
-            {/* Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 mb-12"
-            >
-              <Link href={'/allNav/destinations'}>
-                <button className="bg-cyan-500 hover:bg-cyan-400 px-8 py-4 rounded-full text-base font-bold flex items-center gap-3 transition-all duration-250 hover:scale-[1.03] shadow-2xl shadow-cyan-500/30 text-white cursor-pointer group">
-                  Explore Destinations
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
-
-              <button className="border border-white/25 bg-white/8 backdrop-blur-md hover:bg-white/15 px-8 py-4 rounded-full text-base font-semibold flex items-center gap-3 transition-all duration-250 text-white cursor-pointer">
-                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                  <Play size={14} fill="white" className="ml-0.5" />
-                </div>
-                Watch Video
-              </button>
-            </motion.div>
-
-            {/* Search Box */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 0.9 }}
-              className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-4 max-w-3xl"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-end">
-                {[
-                  { label: 'Destination', placeholder: 'Where to go?' },
-                  { label: 'Duration', placeholder: '3–7 Days' },
-                  { label: 'Budget', placeholder: '$1000–$5000' },
-                ].map((field) => (
-                  <div key={field.label}>
-                    <p className="text-xs text-gray-300 mb-1.5 font-medium">{field.label}</p>
-                    <input
-                      type="text"
-                      placeholder={field.placeholder}
-                      className="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-2.5 text-white text-sm outline-none placeholder:text-gray-400 focus:border-cyan-400/50 focus:bg-white/15 transition-all"
-                    />
-                  </div>
+                {destinations.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
                 ))}
-                <button className="bg-cyan-500 hover:bg-cyan-400 h-[42px] rounded-xl flex items-center justify-center gap-2 font-bold text-white text-sm transition-all duration-250 hover:scale-[1.02] cursor-pointer mt-4 md:mt-0">
-                  <Search size={16} />
-                  Search
-                </button>
-              </div>
-            </motion.div>
+              </select>
+              <ChevronDown className="h-3.5 w-3.5 shrink-0 text-[#F7F2E7]/50" />
+            </span>
+          </label>
 
-          </div>
+          {/* dates */}
+          <label className="flex cursor-pointer flex-col gap-1 bg-[#0B0F0E]/40 px-6 py-4 text-left transition-colors hover:bg-[#0B0F0E]/55 sm:px-7">
+            <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-[#F7F2E7]/50">
+              <CalendarDays className="h-3.5 w-3.5 text-[#F0A868]" />
+              Dates
+            </span>
+            <input
+              type="text"
+              placeholder="Add dates"
+              className="w-full bg-transparent text-sm font-medium text-[#F7F2E7] placeholder:text-[#F7F2E7]/40 outline-none"
+            />
+          </label>
 
-          {/* Stats - bottom right */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.3, duration: 0.9 }}
-            className="hidden lg:flex items-center gap-10 mt-14"
+          {/* travelers */}
+          <label className="flex cursor-pointer flex-col gap-1 bg-[#0B0F0E]/40 px-6 py-4 text-left transition-colors hover:bg-[#0B0F0E]/55 sm:px-7">
+            <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-[#F7F2E7]/50">
+              <Users className="h-3.5 w-3.5 text-[#F0A868]" />
+              Travelers
+            </span>
+            <input
+              type="text"
+              placeholder="2 adults"
+              className="w-full bg-transparent text-sm font-medium text-[#F7F2E7] placeholder:text-[#F7F2E7]/40 outline-none"
+            />
+          </label>
+
+          {/* search button */}
+          <button
+            aria-label="Search trips"
+            className="group flex items-center justify-center gap-2 bg-[#F0A868] px-8 py-4 text-sm font-semibold text-[#0B0F0E] transition-colors hover:bg-[#F5BD87] sm:px-9"
           >
-            {[
-              { num: '120+', label: 'Destinations' },
-              { num: '15K+', label: 'Travelers' },
-              { num: '4.9★', label: 'Rating' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl font-black text-white">{stat.num}</div>
-                <div className="text-gray-400 text-sm mt-0.5">{stat.label}</div>
-              </div>
-            ))}
-            <div className="h-10 w-px bg-white/10" />
-            <div className="flex items-center gap-2.5">
-              <MapPin className="text-cyan-400" size={22} />
-              <div>
-                <div className="text-white font-semibold text-sm">Bali, Indonesia</div>
-                <div className="text-gray-400 text-xs">🔥 Trending Now</div>
-              </div>
-            </div>
-          </motion.div>
+            <Search className="h-4 w-4" strokeWidth={2.5} />
+            <span className="sm:hidden">Search trips</span>
+          </button>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-1.5">
-          <div className="w-1 h-2.5 bg-white/70 rounded-full" />
-        </div>
-      </div>
+      <style>{`
+        .kenburns {
+          animation: kenburns 24s ease-in-out infinite alternate;
+        }
+        @keyframes kenburns {
+          0%   { transform: scale(1) translate(0, 0); }
+          100% { transform: scale(1.12) translate(-1.5%, -1.5%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .kenburns { animation: none; }
+        }
+      `}</style>
     </section>
-  )
+  );
 }
-
-export default HeroBanner
