@@ -3,7 +3,7 @@ import AdminSidebar from '@/components/admin/AdminSidebar';
 export const metadata = {
   title: {
     default: 'Admin Dashboard',
-    template: '%s | Admin — Wanderlust',
+    template: '%s | Admin — Elevate Journeys',
   },
 };
 
