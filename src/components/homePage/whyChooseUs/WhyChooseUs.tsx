@@ -71,7 +71,7 @@ const WhyChooseUs = () => {
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4 leading-tight">
             Why Thousands Choose
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">
-              Wanderlust
+              Elevate Journeys
             </span>
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">

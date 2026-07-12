@@ -4,7 +4,6 @@ import { Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import Logo from '@/assets/Wanderlust.png'
 import NavLinks from './NavLinks';
 import { authClient } from '@/lib/auth-client';
 import { Menu, X, Compass } from 'lucide-react';
@@ -50,17 +49,13 @@ const Navbar = () => {
     >
       <div className='max-w-7xl mx-auto px-5 flex justify-between items-center'>
 
-        {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
-          <Image
-            src={Logo}
-            alt='Wanderlust Logo'
-            width={160}
-            height={50}
-            priority
-            className='w-32 md:w-40 h-auto'
-          />
-        </Link>
+      {/* Logo */}
+<Link href="/" className="flex-shrink-0">
+  <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-none">
+    <span className="text-sky-500">Elevate</span>{" "}
+    <span className="text-slate-900">Journeys</span>
+  </h1>
+</Link>
 
         {/* Desktop Menu */}
         <ul className='hidden lg:flex items-center gap-8'>

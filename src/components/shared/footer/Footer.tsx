@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12">
           <div className="max-w-lg">
             <h1 className="text-4xl md:text-6xl font-serif font-black text-white tracking-tight mb-5">
-              Wanderlust<span className="text-cyan-400">.</span>
+              Elevate Journeys<span className="text-cyan-400">.</span>
             </h1>
             <p className="text-gray-500 leading-relaxed text-base max-w-sm">
               Your gateway to extraordinary travel experiences. We curate unique journeys
@@ -114,7 +114,7 @@ const Footer = () => {
                 <div className="p-2.5 bg-white/5 rounded-xl group-hover:bg-cyan-500 transition-all duration-250 text-cyan-500 group-hover:text-white">
                   <FaEnvelope size={13} />
                 </div>
-                <span className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors">hello@wanderlust.com</span>
+                <span className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors">hello@elevatejourneys.com</span>
               </div>
               <div className="flex items-center gap-3 group cursor-pointer">
                 <div className="p-2.5 bg-white/5 rounded-xl group-hover:bg-cyan-500 transition-all duration-250 text-cyan-500 group-hover:text-white">
@@ -129,7 +129,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-600">
-            © 2026 <span className="text-gray-400 font-medium">Wanderlust</span>. All rights reserved.
+            © 2026 <span className="text-gray-400 font-medium">Elevate Journeys</span>. All rights reserved.
           </p>
           <p className="text-xs text-gray-700">Crafted with ❤️ for adventurers worldwide</p>
         </div>
