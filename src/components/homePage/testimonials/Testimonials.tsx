@@ -20,7 +20,7 @@ const Testimonials = () => {
       trip: "Swiss Alps"
     },
     {
-      text: 'Wanderlust made our honeymoon absolutely perfect. The attention to detail and the personal touches made it feel like a once-in-a-lifetime experience we\'ll cherish forever.',
+      text: 'Elevate Journeys made our honeymoon absolutely perfect. The attention to detail and the personal touches made it feel like a once-in-a-lifetime experience we\'ll cherish forever.',
       name: "James & Emily",
       location: "London, UK",
       image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400",
