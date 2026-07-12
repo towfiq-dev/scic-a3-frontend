@@ -1,5 +1,6 @@
-/** @type {import('next').Next} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
+  /* config options here */
   images: {
     remotePatterns: [
       {
@@ -8,6 +9,19 @@ const nextConfig = {
         port: '',
         pathname: '**',
         search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.pixabay.com',
+        port: '',
+        pathname: '**',
+        search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
