@@ -7,11 +7,14 @@ import React, { useState, useEffect } from 'react';
 import NavLinks from './NavLinks';
 import { authClient } from '@/lib/auth-client';
 import { Menu, X, Compass } from 'lucide-react';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const router = useRouter()
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -24,9 +27,18 @@ const Navbar = () => {
   const user = session?.user
 
   const handleSignOut = async () => {
-    await authClient.signOut()
-    setMenuOpen(false)
+  try {
+    await authClient.signOut();
+
+    toast.success("Signed out successfully!");
+
+    setMenuOpen(false);
+    router.push("/auth/signin");
+  } catch (error) {
+    console.error(error);
+    toast.error("Failed to sign out. Please try again.");
   }
+};
 
   const links = (
     <>
