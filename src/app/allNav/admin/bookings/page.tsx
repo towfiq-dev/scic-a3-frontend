@@ -24,7 +24,7 @@ export default async function AdminBookings() {
   } catch {
     note = 'backend-missing';
   }
-
+  
   return (
     <div className="p-6 md:p-8 space-y-6">
       <div>
