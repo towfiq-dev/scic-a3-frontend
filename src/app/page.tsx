@@ -4,6 +4,8 @@ import CTASection from '@/components/homePage/CTASection/CTASection';
 import Featured from '@/components/homePage/featured/Featured';
 import Testimonials from '@/components/homePage/testimonials/Testimonials';
 import WhyChooseUs from '@/components/homePage/whyChooseUs/WhyChooseUs';
+import TripCostCalculator from '@/components/homePage/TripCostCalculator/TripCostCalculator';
+
 
 export const metadata = {
   title: 'Wanderlust — Explore the World',
@@ -16,6 +18,7 @@ const Home = () => {
       <Banner />
       <Featured />
       <WhyChooseUs />
+      <TripCostCalculator/>
       <Testimonials />
       <CTASection />
     </div>
