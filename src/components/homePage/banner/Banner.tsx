@@ -37,24 +37,44 @@ const trustItems = [
 
 const destinations = ["Bali, Indonesia", "Maldives", "Santorini, Greece", "Sajek Valley, Bangladesh"];
 
+const backgroundImages = [
+  "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=2400&q=80",
+  "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=2400&q=80",
+  "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=2400&q=80",
+  "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=2400&q=80",
+];
+
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
+  const [bgIndex, setBgIndex] = useState(0);
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);
     return () => clearTimeout(t);
   }, []);
 
+  useEffect(() => {
+    const id = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <section className="relative isolate w-full overflow-hidden bg-[#0B0F0E] pb-32 sm:pb-28">
       {/* ---------- Cinematic background photo ---------- */}
       <div className="absolute inset-0 h-[100vh] min-h-[640px] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=2400&q=80"
-          alt=""
-          aria-hidden="true"
-          className="h-full w-full origin-center scale-100 object-cover kenburns"
-        />
+        {backgroundImages.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            aria-hidden="true"
+            className={`absolute inset-0 h-full w-full origin-center object-cover kenburns transition-opacity duration-[1500ms] ease-in-out ${
+              i === bgIndex ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
         {/* colour grade + legibility gradients */}
         <div className="absolute inset-0 bg-[#0B0F0E]/35" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0E] via-[#0B0F0E]/55 to-[#0B0F0E]/10" />
