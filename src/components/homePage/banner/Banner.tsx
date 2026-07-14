@@ -14,20 +14,6 @@ import {
   Compass,
 } from "lucide-react";
 
-/**
- * Hero — "Elevate Journeys"
- *
- * Tokens:
- *  - ink:    #0B0F0E  (deepest shadow, text on light surfaces)
- *  - amber:  #F0A868  (lantern / golden-hour accent — the one warm note)
- *  - sand:   #F7F2E7  (headline + primary CTA)
- *  - sea:    #7FD9D2  (secondary accent, cool counterpoint to amber)
- *
- * Signature element: a floating glass "plan your trip" card that overlaps
- * the hero's bottom edge — it's the one bold, functional device the page
- * is built around, everything else stays quiet.
- */
-
 const trustItems = [
   { icon: ShieldCheck, label: "Free cancellation" },
   { icon: BadgeCheck, label: "Best price guarantee" },
@@ -140,7 +126,7 @@ export default function Hero() {
         </ul>
       </div>
 
-      {/* ---------- Signature: floating "plan your trip" search card ---------- */}
+      {/* Signature: floating "plan your trip" search card  */}
       <div
         className={`relative z-10 mx-auto -mt-16 w-[min(1040px,92vw)] transition-all duration-700 delay-500 ${
           mounted ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
