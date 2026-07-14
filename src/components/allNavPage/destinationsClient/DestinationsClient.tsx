@@ -2,8 +2,10 @@
 import React, { useState, useMemo } from 'react';
 import DestinationCard from '../destinationCard/DestinationCard';
 import FilteringSort from '../filteringSort/FilteringSort';
+import SearchBar from '../searchBar/SearchBar';
 
 const DestinationsClient = ({ destinations }) => {
+  const [searchQuery, setSearchQuery] = useState('');
   const [filters, setFilters] = useState({
     category: 'All',
     priceRange: { label: 'All Prices', min: 0, max: Infinity },
@@ -12,6 +14,14 @@ const DestinationsClient = ({ destinations }) => {
 
   const filteredAndSorted = useMemo(() => {
     let result = [...destinations];
+
+    // ── Filter by Search Query (destination name) ──
+    if (searchQuery.trim()) {
+      const query = searchQuery.trim().toLowerCase();
+      result = result.filter((d) =>
+        (d.destinationName || '').toLowerCase().includes(query)
+      );
+    }
 
     // ── Filter by Category ──
     if (filters.category && filters.category !== 'All') {
@@ -51,10 +61,13 @@ const DestinationsClient = ({ destinations }) => {
     }
 
     return result;
-  }, [destinations, filters]);
+  }, [destinations, filters, searchQuery]);
 
   return (
     <>
+      {/* Search Bar */}
+      <SearchBar value={searchQuery} onChange={setSearchQuery} />
+
       {/* Filter Bar */}
       <FilteringSort onFilterChange={setFilters} />
 
@@ -62,6 +75,11 @@ const DestinationsClient = ({ destinations }) => {
       <div className="mb-8">
         <p className="text-gray-500 font-medium italic">
           Showing {filteredAndSorted.length} destination{filteredAndSorted.length !== 1 ? 's' : ''}
+          {searchQuery.trim() && (
+            <span className="ml-1">
+              matching <span className="text-cyan-600 font-semibold">&quot;{searchQuery}&quot;</span>
+            </span>
+          )}
           {filters.category !== 'All' && (
             <span className="ml-1">
               in <span className="text-cyan-600 font-semibold">{filters.category}</span>
@@ -81,7 +99,11 @@ const DestinationsClient = ({ destinations }) => {
         <div className="text-center py-20 text-gray-400">
           <p className="text-5xl mb-4">🗺️</p>
           <p className="text-xl font-semibold text-gray-600 mb-2">No destinations found</p>
-          <p className="text-sm">Try adjusting your filters to see more results.</p>
+          <p className="text-sm">
+            {searchQuery.trim()
+              ? `No results for "${searchQuery}". Try a different name or adjust your filters.`
+              : 'Try adjusting your filters to see more results.'}
+          </p>
         </div>
       )}
     </>
