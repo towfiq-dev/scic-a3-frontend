@@ -33,7 +33,10 @@ export default async function AdminBookings() {
         <p className="text-gray-500 text-sm mt-1">View and manage all platform bookings</p>
       </div>
 
-      <AdminBookingsClient bookings={bookings} backendNote={note} token={token} />
+      <AdminBookingsClient 
+      bookings={bookings} 
+      backendNote={note} 
+      token={token} />
     </div>
   );
 }

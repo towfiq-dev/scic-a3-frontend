@@ -16,7 +16,8 @@ export default async function AdminProfile() {
         <p className="text-gray-500 text-sm mt-1">View and update your account information</p>
       </div>
 
-      <AdminProfileClient user={user} />
+      <AdminProfileClient 
+      user={user} />
     </div>
   );
 }

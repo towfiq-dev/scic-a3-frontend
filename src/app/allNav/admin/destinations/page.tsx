@@ -17,7 +17,6 @@ export default async function AdminDestinations() {
 
   return (
     <div className="p-6 md:p-8 space-y-6">
-
       {/* Header */}
       <div className="flex items-center justify-between gap-4">
         <div>
@@ -36,7 +35,9 @@ export default async function AdminDestinations() {
       </div>
 
       {/* Table component (client) */}
-      <AdminDestinationsTable destinations={destinations} token={token} />
+      <AdminDestinationsTable 
+      destinations={destinations} 
+      token={token} />
     </div>
   );
 }
