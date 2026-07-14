@@ -8,7 +8,7 @@ import TripCostCalculator from '@/components/homePage/TripCostCalculator/TripCos
 
 
 export const metadata = {
-  title: 'Wanderlust — Explore the World',
+  title: 'Elevate Journeys — Explore the World',
   description: 'Discover breathtaking destinations and create unforgettable memories with our curated travel experiences.',
 };
 
