@@ -18,14 +18,14 @@ const dmSans = DM_Sans({
 
 export const metadata = {
   title: {
-    default: "Wanderlust — Explore the World",
-    template: "%s | Wanderlust",
+    default: "Elevate Journeys — Explore the World",
+    template: "%s | Elevate Journeys",
   },
   description:
-    "Discover breathtaking destinations and curated travel experiences with Wanderlust. Book luxury tours, beach holidays, and mountain escapes.",
-  keywords: ["travel", "destinations", "tours", "booking", "luxury travel", "wanderlust"],
+    "Discover breathtaking destinations and curated travel experiences with Elevate Journeys. Book luxury tours, beach holidays, and mountain escapes.",
+  keywords: ["travel", "destinations", "tours", "booking", "luxury travel", "Elevate Journeys"],
   openGraph: {
-    title: "Wanderlust — Explore the World",
+    title: "Elevate Journeys — Explore the World",
     description: "Your gateway to extraordinary travel experiences.",
     type: "website",
   },
